@@ -5,8 +5,9 @@ on: push
 jobs:
   env-vars-and-context:
     runs-on: ubuntu-latest
+    # if: $GITHUB == 'refs/heads/main' Doesn't work cuz is not runner level
+    if: github.ref == 'refs/heads/main'
     steps:
-        
         # Send to Runnner 
       - name: Log ENV VAR
         run: echo $GITHUB_REF
