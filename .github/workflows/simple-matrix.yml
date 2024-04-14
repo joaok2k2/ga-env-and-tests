@@ -25,6 +25,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       
+      
+      - name: test fail-fast
+        if: matrix.node-version == 16
+        run: |
+          sleep 60
+
       - name: test fail-fast
         if: matrix.node-version == 18
         run: |
