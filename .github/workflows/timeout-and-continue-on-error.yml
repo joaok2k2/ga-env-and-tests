@@ -1,0 +1,12 @@
+name: Testing timeout and continuer-on-error
+on:
+  push:
+    branches:
+      - main
+jobs:
+  timeout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing 
+        run: pwd
+      
