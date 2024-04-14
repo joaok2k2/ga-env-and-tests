@@ -28,7 +28,7 @@ jobs:
       - name: test fail-fast
         if: ${{ matrix.node-version }} == 16 || ${{ matrix.node-version }} == 18
         run: |
-          echo ${{ matrix-node-version }}
+          echo ${{ matrix.node-version }}
 
       - name: Check node
         run: node -v
