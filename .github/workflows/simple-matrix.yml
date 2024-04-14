@@ -9,8 +9,9 @@ jobs:
   node-matrix:
     strategy:
       matrix:
+        os: [ windows-latest, ubuntu-latest]
         node-version: [16,18,20]
-    runs-on: ubuntu-latest
+    runs-on: matrix.os
     steps:
       - name: Check node
         run: node -v
