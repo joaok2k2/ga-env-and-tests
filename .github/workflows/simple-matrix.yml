@@ -26,7 +26,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       
       
-      - name: test fail-fast
+      - name: test fail-fast cancelled with continue-on-error false
         if: matrix.node-version == 16
         run: |
           sleep 60
