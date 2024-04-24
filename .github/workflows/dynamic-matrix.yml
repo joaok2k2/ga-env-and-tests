@@ -19,6 +19,20 @@ jobs:
   preapare-matrix:
     runs-on: ubuntu-latest
     steps:
+      
+      - name: Convert inputs into array 
+        id: matrix-arrays
+        uses: actions/github-script@v7
+        with:
+          script: "return {
+            'os': context.payload.inputs['os'].split(','),
+            'node-version': context.payload.inputs['node-version'].split(',')
+           }"
+          result-encoding: json
+      
+      - name: output matrix-arrays
+        run: |
+          echo "${{ fromJSON(steps.matrix-arrays.output.result) }}"
       - name: test output step 1
         id: step-1
         run: echo "step-1-output=$(date)" >> $GITHUB_OUTPUT
