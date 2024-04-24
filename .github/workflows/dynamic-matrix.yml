@@ -7,54 +7,54 @@ on:
         description: Operating Systems
         default: "windows-latest, ubuntu-latest"
         type: string
-      
+
       node-version:
         description: Node version
         default: "14,15,16"
         type: string
-        
 
 jobs:
-
   preapare-matrix:
     runs-on: ubuntu-latest
+    outputs:
+      MATRIX-ARRAY-EXECUTION: ${{ steps.matrix-arrays.outputs.result }}
+
     steps:
-      
-      - name: Convert inputs into array 
+      - name: Convert inputs into array
         id: matrix-arrays
         uses: actions/github-script@v7
         with:
           script: "return {
             'os': context.payload.inputs['os'].split(','),
             'node-version': context.payload.inputs['node-version'].split(',')
-           }"
+            }"
           result-encoding: json
-      
+
       - name: output matrix-arrays
         run: |
           echo "${{ steps.matrix-arrays.outputs.result }}"
       - name: test output step 1
         id: step-1
         run: echo "step-1-output=$(date)" >> $GITHUB_OUTPUT
-      
+
       - name: test output step 2
         id: step-2
         run: echo "step-2-output=$RANDOM" >> $GITHUB_OUTPUT
-      
+
       - name: check output values
         run: |
           echo "${{ steps.step-1.outputs.step-1-output }}"
           echo "${{ steps.step-2.outputs.step-2-output }}"
-      
-  
+
   node-matrix:
+    needs: prepare-matrix
     strategy:
       matrix:
-        os: [ windows-latest, ubuntu-latest]
-        node-version: [16, 18, 20]
+        os: ${{ fromJson(needs.prepare-matrix.outputs.MATRIX-ARRAY-EXECUTION).os }}
+        node-version: ${{ fromJson(needs.prepare-matrix.outputs.MATRIX-ARRAY-EXECUTION).node-version }}
+
     runs-on: ${{ matrix.os }}
     steps:
-      
       - name: Check node
         run: node -v
 
