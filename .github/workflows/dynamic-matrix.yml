@@ -32,7 +32,7 @@ jobs:
       
       - name: output matrix-arrays
         run: |
-          echo "${{ fromJSON(steps.matrix-arrays.output.result) }}"
+          echo "${{ steps.matrix-arrays.output.result }}"
       - name: test output step 1
         id: step-1
         run: echo "step-1-output=$(date)" >> $GITHUB_OUTPUT
