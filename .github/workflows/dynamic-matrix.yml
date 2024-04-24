@@ -21,11 +21,11 @@ jobs:
     steps:
       - name: test output step 1
         id: step-1
-        run: echo "step-1-output=$(date)" >> GITHUB_OUTPUT
+        run: echo "step-1-output=$(date)" >> $GITHUB_OUTPUT
       
       - name: test output step 2
         id: step-2
-        run: echo "step-2-output=$RANDOM" >> GITHUB_OUTPUT
+        run: echo "step-2-output=$RANDOM" >> $GITHUB_OUTPUT
       
       - name: check output values
         run: |
