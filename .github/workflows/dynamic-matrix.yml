@@ -14,7 +14,7 @@ on:
         type: string
 
 jobs:
-  preapare-matrix:
+  prepare-matrix:
     runs-on: ubuntu-latest
     outputs:
       MATRIX-ARRAY-EXECUTION: ${{ steps.matrix-arrays.outputs.result }}
