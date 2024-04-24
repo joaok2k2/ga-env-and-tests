@@ -33,7 +33,7 @@ jobs:
       - name: output matrix-arrays
         run: |
           echo "${{ steps.matrix-arrays.outputs.result }}"
-          echo "${{ context.payload.inputs }}"
+          echo "${{ context.payload }}"
       - name: test output step 1
         id: step-1
         run: echo "step-1-output=$(date)" >> $GITHUB_OUTPUT
