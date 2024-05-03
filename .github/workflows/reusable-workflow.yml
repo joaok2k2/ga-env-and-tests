@@ -10,7 +10,7 @@ jobs:
   generate-output:
     runs-on: ubuntu-latest
     outputs:
-      date: ${{ steps.date-steps.outputs.date }}
+      date: ${{ steps.date-step.outputs.date }}
     steps:
       - run: echo "date=$(date)" >> $GITHUB_OUTPUT
         id: date-step
