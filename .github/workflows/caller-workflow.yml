@@ -15,3 +15,13 @@ jobs:
       name: ${{ inputs.name }}
     secrets:
       access-token: ${{ secrets.ACCESS_TOKEN }}
+  
+  calling-a-reusable-wf-in-the-same-repo:
+    uses: ./.github/workflows/reusable-workflow.yml
+  
+  using-resuable-wf-output:
+    needs: calling-a-reusable-wf-in-the-same-repo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Date Output
+        run: echo "${{  needs.calling-a-reusable-wf-in-the-same-repo.outputs.date }}"
