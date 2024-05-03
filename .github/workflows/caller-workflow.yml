@@ -18,8 +18,7 @@ jobs:
   
   calling-a-reusable-wf-in-the-same-repo:
     uses: ./.github/workflows/reusable-workflow.yml
-    secrets:
-       access-token: inherit
+    secrets: inherit
   
   using-resuable-wf-output:
     needs: calling-a-reusable-wf-in-the-same-repo
