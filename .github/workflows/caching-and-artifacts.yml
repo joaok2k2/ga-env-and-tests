@@ -12,6 +12,17 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       
+
+      - name: Caching Dependencies
+        id: cache-dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: "npm-cache"
+
+      - name: Cache Output
+        run: echo "${{ toJSON(steps.cache-dependencies.outputs) }}"
+
       - name: Install Dependencies
         run: |
           npm install
