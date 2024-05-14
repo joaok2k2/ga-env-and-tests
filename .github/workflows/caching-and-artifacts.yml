@@ -43,7 +43,7 @@ jobs:
           retention-days: 10
       
       - name: Download Artifacts
-        uses: actions/downlaod-artifact@v3
+        uses: actions/download-artifact@v3
         with:
           name: code-coverage
           path: code-coverage-report
