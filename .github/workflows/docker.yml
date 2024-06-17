@@ -25,6 +25,10 @@ jobs:
      
       - name: Log env
         run: echo $API_URL
+
+      - name: Creating a file
+        run: |
+          echo "Some words to people who knows how to use envsubst" > helloMySTB2024.txt
       
       - name: Container in a steps
         uses: docker://node:18.16-alpine3.17
@@ -36,3 +40,19 @@ jobs:
         uses: docker://node:18.16-alpine3.17
         with:
           args: -v
+      
+      - name: Show file contents
+        uses: docker://node:18.16-alpine3.17
+        with:
+          entrypoint: cat
+          args: helloMySTB2024.txt
+      
+      - name: Listing directory
+        uses: docker://node:18.16-alpine3.17
+        with:
+          entrypoint: ls
+          args: .
+
+
+
+      
