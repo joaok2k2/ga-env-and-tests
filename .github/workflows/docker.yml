@@ -59,7 +59,7 @@ jobs:
       - name: Execute Script
         uses: docker://node:18.16-alpine3.17
         with:
-          entrypoint: "bash script.sh"
+          entrypoint: " ./script.sh"
           args: "Teste de script"
       
 
