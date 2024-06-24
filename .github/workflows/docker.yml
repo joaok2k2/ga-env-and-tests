@@ -53,6 +53,15 @@ jobs:
           entrypoint: ls
           args: .
 
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Execute Script
+        uses: docker://node:18.16-alpine3.17
+        with:
+          entrypoint: "bash script.sh"
+          args: "Teste de script"
+      
 
 
       
