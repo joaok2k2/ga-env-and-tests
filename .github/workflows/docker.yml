@@ -63,7 +63,7 @@ jobs:
           args: "Teste de script"
       
       - name: Send a slack message
-        uses: docker//technosophos/slack-notify
+        uses: docker://technosophos/slack-notify
         env:
           SLACK_WEBWOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_TITTLE: POC from Github Actions
